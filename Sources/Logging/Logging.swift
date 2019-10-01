@@ -244,6 +244,169 @@ extension Logger {
                          file: String = #file, function: String = #function, line: UInt = #line) {
         self.log(level: .critical, message(), metadata: metadata(), file: file, function: function, line: line)
     }
+
+
+    // MARK: Swift.print style interface
+
+    /// Log a message passing with the `Logger.Level.trace` log level.
+    ///
+    /// If `.trace` is at least as severe as the `Logger`'s `logLevel`, it will be logged,
+    /// otherwise nothing will happen.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func trace(_ items: Any..., separator: String = " ",
+                      metadata: @autoclosure () -> Logger.Metadata? = nil,
+                      file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .trace, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
+
+    /// Log a message passing with the `Logger.Level.debug` log level.
+    ///
+    /// If `.debug` is at least as severe as the `Logger`'s `logLevel`, it will be logged,
+    /// otherwise nothing will happen.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func debug(_ items: Any..., separator: String = " ",
+                      metadata: @autoclosure () -> Logger.Metadata? = nil,
+                      file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .debug, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
+
+    /// Log a message passing with the `Logger.Level.info` log level.
+    ///
+    /// If `.info` is at least as severe as the `Logger`'s `logLevel`, it will be logged,
+    /// otherwise nothing will happen.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func info(_ items: Any..., separator: String = " ",
+                     metadata: @autoclosure () -> Logger.Metadata? = nil,
+                     file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .info, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
+
+    /// Log a message passing with the `Logger.Level.notice` log level.
+    ///
+    /// If `.notice` is at least as severe as the `Logger`'s `logLevel`, it will be logged,
+    /// otherwise nothing will happen.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func notice(_ items: Any..., separator: String = " ",
+                       metadata: @autoclosure () -> Logger.Metadata? = nil,
+                       file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .notice, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
+
+    /// Log a message passing with the `Logger.Level.warning` log level.
+    ///
+    /// If `.warning` is at least as severe as the `Logger`'s `logLevel`, it will be logged,
+    /// otherwise nothing will happen.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func warning(_ items: Any..., separator: String = " ",
+                        metadata: @autoclosure () -> Logger.Metadata? = nil,
+                        file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .warning, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
+
+    /// Log a message passing with the `Logger.Level.error` log level.
+    ///
+    /// If `.error` is at least as severe as the `Logger`'s `logLevel`, it will be logged,
+    /// otherwise nothing will happen.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func error(_ items: Any..., separator: String = " ",
+                      metadata: @autoclosure () -> Logger.Metadata? = nil,
+                      file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .error, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
+
+    /// Log a message passing with the `Logger.Level.critical` log level.
+    ///
+    /// `.critical` messages will always be logged.
+    ///
+    /// - parameters:
+    ///    - items: Zero or more items to print.
+    ///    - separator: A string to print between each item. The default is a single space (`" "`).
+    ///    - metadata: One-off metadata to attach to this log message
+    ///    - file: The file this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#file`).
+    ///    - function: The function this log message originates from (there's usually no need to pass it explicitly as
+    ///                it defaults to `#function`).
+    ///    - line: The line this log message originates from (there's usually no need to pass it explicitly as it
+    ///            defaults to `#line`).
+    @inlinable
+    public func critical(_ items: Any..., separator: String = " ",
+                         metadata: @autoclosure () -> Logger.Metadata? = nil,
+                         file: String = #file, function: String = #function, line: UInt = #line) {
+        let msg = Logger.Message(stringLiteral: items.map(String.init(describing:)).joined(separator: separator))
+        self.log(level: .critical, msg, metadata: metadata(), file: file, function: function, line: line)
+    }
 }
 
 /// The `LoggingSystem` is a global facility where the default logging backend implementation (`LogHandler`) can be
